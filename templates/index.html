@@ -1,12 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Claim Kraken</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <style>
+        .jumbotron {
+            padding: 2em;
+            margin-bottom: 2em;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Claim Kraken</h1>
-    <h2>A Hub of Patent Law Knowledge</h2>
+    <div class="container">
+        <div class="jumbotron bg-light">
+            <h1>Claim Kraken</h1>
+            <h2>A Hub of Patent Law Knowledge</h2>
+        </div>
+
+        <div class="row">
+            <div class="container col-lg-7">
+                <h3>Recent CAFC Opinions</h3>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Case Name</th>
+                        <th>Date Created</th>
+                        <th>Page Count</th>
+                        <th>Download URL</th>
+                    </tr>
+                    {% for opinion in cafc_opinions %}
+
+                    <tr>
+                        <td>{{ opinion['case_name'] }}</td>
+                        <td>{{ opinion['date_created'] }}</td>
+                        <td>{{ opinion['page_count'] }}</td>
+                        <td>
+                            <a class="btn btn-primary" href="{{ opinion['download_url'] }}">
+                                Read Opinion
+                            </a>
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+                </table>
+            </div>
+
+            <br>
+
+            <div class="container col-lg-5">
+                <h3>Recent CAFC Hearings</h3>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Case Name</th>
+                        <th>Date Created</th>
+                        <th>Download URL</th>
+                    </tr>
+                    {% for hearing in cafc_hearings %}
+
+                    <tr>
+                        <td>{{ hearing['case_name'] }}</td>
+                        <td>{{ hearing['date_created'] }}</td>
+                        <td>
+                            <a class="btn btn-primary" href="{{ hearing['download_url'] }}">
+                                Listen to Hearing
+                            </a>
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

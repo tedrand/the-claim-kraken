@@ -1,1 +1,7 @@
+# CRUFT
 venv/
+.ipynb_checkpoints
+__pycache__
+
+# SECURE FILES
+.env
