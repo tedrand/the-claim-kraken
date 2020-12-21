@@ -5,3 +5,4 @@ __pycache__
 
 # SECURE FILES
 .env
+data/cafc_opinons.json

@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <h3>CAFC Opinions Based on Alice Corp. v. CLS Bank</h3>
+    <table class="table table-striped">
+        <tr>
+            <!-- <th>Index</th> -->
+            <th>Case Name</th>
+            <th>Date Created</th>
+            <th>Page Count</th>
+            <th>Download URL</th>
+        </tr>
+        {% for opinion in alice_cases %}
+
+        <tr>
+            <!-- <td>{{ loop.index }}</td> -->
+            <td>{{ opinion['case_name'] }}</td>
+            <td>{{ opinion['date_created'] }}</td>
+            <td>{{ opinion['page_count']|int }}</td>
+            <td>
+                <a class="btn btn-sm btn-primary" href="{{ opinion['download_url'] }}">
+                    Read Opinion
+                </a>
+            </td>
+        </tr>
+
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
